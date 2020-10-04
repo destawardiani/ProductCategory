@@ -35,7 +35,8 @@ class CategoryList extends Component {
 
 function mapStateToProps(state) {
     return {
-        category: state.category
+        category: state.category,
+        activeCategory: state.activeCategory
     }
 }
 
