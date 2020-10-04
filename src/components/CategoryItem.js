@@ -29,9 +29,11 @@ class CategoryItem extends Component {
             }) 
      }
     renderProductList(){
-        return this.state.products.map(item =>
-            <ProductItem product={ item } key={ item.id } />
-        )
+        if (this.props.activeCategory == this.props.category.id) {
+            return this.state.products.map(item =>
+                <ProductItem product={ item } key={ item.id } />
+            )
+        }
     }
     render() {
         const { id, name } = this.props.category
@@ -56,4 +58,10 @@ class CategoryItem extends Component {
     }
 }
 
-export default connect()(CategoryItem);
+function mstp(state) {
+    return {
+        activeCategory: state.activeCategory
+    }
+}
+
+export default connect(mstp)(CategoryItem);
